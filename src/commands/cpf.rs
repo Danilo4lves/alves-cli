@@ -16,7 +16,7 @@ fn clean_mask(value: String) -> String {
 
     match is_valid {
         true => result,
-        false => panic!("CPF not valid"),
+        false => panic!("Invalid CPF"),
     }
 }
 
@@ -31,6 +31,20 @@ pub fn validate(value: &Option<String>) {
 
             let mut first_digit_sum = 0;
             let val_chars = parsed_value.graphemes(true).collect::<Vec<&str>>();
+
+            let mut are_all_digits_equal = true;
+
+            for &c in &val_chars {
+                are_all_digits_equal = c == val_chars[0];
+
+                if !are_all_digits_equal {
+                    break;
+                }
+            }
+
+            if are_all_digits_equal {
+                panic!("Invalid CPF");
+            }
 
             for i in 0..9 {
                 let num: usize = val_chars[i].parse().unwrap();
