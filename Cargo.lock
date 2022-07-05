@@ -12,6 +12,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "alves-cli"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "regex",
+ "unicode-segmentation",
+]
+
+[[package]]
 name = "atty"
 version = "0.2.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -92,15 +101,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "62b467343b94ba476dcb2500d242dadbb39557df889310ac77c5d99100aaac33"
 dependencies = [
  "libc",
-]
-
-[[package]]
-name = "home-cli"
-version = "0.1.0"
-dependencies = [
- "clap",
- "regex",
- "unicode-segmentation",
 ]
 
 [[package]]
