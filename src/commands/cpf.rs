@@ -17,7 +17,7 @@ fn clean_mask(value: String) -> String {
 
     match is_valid {
         true => result,
-        false => panic!("Invalid CPF"),
+        false => panic!("Invalid CPF format"),
     }
 }
 
@@ -139,5 +139,18 @@ pub fn validate(value: &Option<String>) {
             println!("Valid CPF");
         }
         _ => panic!("CPF not given"),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    #[should_panic(expected = "Invalid CPF format")]
+    fn test_validate() {
+        let cpf = Some(String::from("864.720.875-7"));
+
+        validate(&cpf);
     }
 }
