@@ -27,7 +27,7 @@ rustup component add clippy
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo 'Installing linux dependencies'
   source ~/.bashrc
-  sudo apt install build-essential
+  sudo apt install build-essential -y
 fi
 
 echo "Rust configured!"
