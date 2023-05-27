@@ -17,5 +17,7 @@ pub fn run() {
     Command::new("bash")
         .stdin(Stdio::from(stdout))
         .spawn()
-        .expect("Failed install NVM script");
+        .expect("Failed install NVM script")
+        .wait()
+        .expect("Failed to wait for NVM installer");
 }
