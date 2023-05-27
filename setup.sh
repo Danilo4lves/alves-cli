@@ -27,6 +27,8 @@ rustup component add clippy
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo 'Installing linux dependencies'
   source ~/.bashrc
+  sudo apt update
+  sudo apt upgrade
   sudo apt install build-essential -y
 fi
 
