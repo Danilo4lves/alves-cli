@@ -68,7 +68,7 @@ fn copy_configs() {
     };
 }
 
-pub fn setup_dev_config() {
+pub fn setup_dev_config_repo() {
     fetch_dev_config();
     copy_configs();
 }

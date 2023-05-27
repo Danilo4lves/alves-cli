@@ -1,6 +1,6 @@
 use std::process::Command;
 
-use crate::common::{brew::install_brew, dev_config::setup_dev_config, logger::Logger};
+use crate::common::{brew::install_brew, dev_config::setup_dev_config_repo, logger::Logger};
 
 fn install_neovim() {
     Logger::info("Installing NeoVim...".to_string());
@@ -22,7 +22,7 @@ fn install_neovim() {
                     .wait();
 
                 match result {
-                    Ok(_) => Logger::info("NeoVim was installed successfully".to_string()),
+                    Ok(_) => Logger::success("NeoVim was installed successfully".to_string()),
                     Err(err) => {
                         Logger::error(format!(
                             "There was a problem while installing NeoVim: {}",
@@ -39,5 +39,5 @@ fn install_neovim() {
 pub fn run() {
     install_brew();
     install_neovim();
-    setup_dev_config();
+    setup_dev_config_repo();
 }

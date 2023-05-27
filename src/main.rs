@@ -2,13 +2,14 @@ mod commands;
 mod common;
 
 use clap::{ArgEnum, Parser};
-use commands::{cpf, setup_neovim};
+use commands::{cpf, setup_dev_config, setup_neovim};
 
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ArgEnum)]
 enum CliCommand {
     CpfGenerate,
     CpfValidate,
     SetupNeovim,
+    SetupDevConfig,
 }
 
 #[derive(Parser)]
@@ -25,5 +26,6 @@ fn main() {
         CliCommand::CpfGenerate => cpf::generate(),
         CliCommand::CpfValidate => cpf::validate(&value),
         CliCommand::SetupNeovim => setup_neovim::run(),
+        CliCommand::SetupDevConfig => setup_dev_config::run(),
     }
 }

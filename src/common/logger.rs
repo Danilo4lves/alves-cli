@@ -11,6 +11,10 @@ impl Logger {
         println!("{}: {}", "INFO".blue().bold(), msg);
     }
 
+    pub fn success(msg: String) {
+        println!("{}: {}", "SUCCESS".green().bold(), msg.green());
+    }
+
     pub fn warn(msg: String) {
         println!("{}: {}", "WARN".yellow().bold(), msg);
     }
