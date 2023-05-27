@@ -24,4 +24,10 @@ cargo --version
 rustup component add rustfmt
 rustup component add clippy
 
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  echo 'Installing linux dependencies'
+  source ~/.bashrc
+  sudo apt install build-essential
+fi
+
 echo "Rust configured!"
