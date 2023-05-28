@@ -1,6 +1,10 @@
 use std::process::{Command, Stdio};
 
-use crate::common::{constants::BASH_SHELL, logger::Logger, source_env::source_env};
+use crate::common::{
+    constants::{BASH_SHELL, NODE_LTS_INSTALL_SCRIPT_FILE},
+    logger::Logger,
+    utils::get_scripts_path,
+};
 
 pub fn run() {
     Logger::info("Installing NVM...".to_string());
@@ -21,15 +25,12 @@ pub fn run() {
         .wait()
         .expect("Failed to wait for NVM installer");
 
-    source_env();
-
     Logger::success("NVM installed successfully!".to_string());
     Logger::info("Installing latest nodejs LTS...".to_string());
 
-    Command::new("nvm")
-        .arg("install")
-        .arg("--lts")
-        .envs(std::env::vars())
+    Command::new(BASH_SHELL)
+        .arg(NODE_LTS_INSTALL_SCRIPT_FILE)
+        .current_dir(get_scripts_path())
         .spawn()
         .expect("Failed install node LTS")
         .wait()
