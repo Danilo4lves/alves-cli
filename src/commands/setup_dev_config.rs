@@ -1,12 +1,7 @@
-use crate::common::logger::Logger;
-
-use super::setup_neovim;
+use super::{setup_neovim, setup_zsh, setup_nvm};
 
 pub fn run() {
-    Logger::warn(
-        "Setup focused on MacOS. If you are using another OS you may encounter some errors."
-            .to_string(),
-    );
-
+    setup_zsh::run();
+    setup_nvm::run();
     setup_neovim::run();
 }

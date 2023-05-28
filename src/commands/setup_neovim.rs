@@ -1,6 +1,9 @@
 use std::process::Command;
 
-use crate::common::{brew::install_brew, dev_config::setup_dev_config_repo, logger::Logger};
+use crate::common::{
+    brew::install_brew, cross_install::cross_install, dev_config::setup_dev_config_repo,
+    logger::Logger,
+};
 
 fn install_neovim() {
     Logger::info("Installing NeoVim...".to_string());
@@ -14,12 +17,7 @@ fn install_neovim() {
         }
         Err(err) => match err.kind() {
             std::io::ErrorKind::NotFound => {
-                let result = Command::new("brew")
-                    .arg("install")
-                    .arg("neovim")
-                    .spawn()
-                    .expect("Neovim to be installed")
-                    .wait();
+                let result = cross_install("neovim");
 
                 match result {
                     Ok(_) => Logger::success("NeoVim was installed successfully".to_string()),

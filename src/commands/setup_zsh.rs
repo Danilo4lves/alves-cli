@@ -6,8 +6,8 @@ use std::process::Stdio;
 
 pub fn run() {
     Logger::info("Installing oh-my-zsh...".to_string());
-    
-    cross_install("zsh", "zsh");
+
+    cross_install("zsh").expect("Failed to install zsh");
 
     let output = Command::new("curl")
         .arg("-o-")
