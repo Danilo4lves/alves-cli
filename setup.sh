@@ -1,3 +1,10 @@
+if [ "${BASH_SOURCE[0]}" -ef "$0" ]
+then
+    echo "ERROR: This script should be sourced, not executed!"
+    echo "Please, run: source setup.sh"
+    exit 1
+fi
+
 set -e
 cd -- "$(dirname -- "$0")"
 pwd
@@ -33,4 +40,3 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 fi
 
 echo "Rust configured!"
-echo "WARN: Recommend to run this script using source: source bash.sh"
